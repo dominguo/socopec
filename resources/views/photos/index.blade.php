@@ -8,7 +8,7 @@
                 <div class="panel-heading">Gestion des statuts</div>
 
                 <div class="panel-body">
-                    <form action="{{ url('/photo/add/1') }}" method="post" enctype="multipart/form-data" class="alert alert-info">
+                    <form action="{{ url('/photo/add/') }}/{{ $vehicule }}" method="post" enctype="multipart/form-data" class="alert alert-info">
                         {{ csrf_field() }}
                         <input type="file" name="photo" class="col-md-11">
                         <input type="submit" class="btn-primary" class="col-md-1">
@@ -26,11 +26,7 @@
                                         <div>{{ $p->nom }}</div>
                                     </td>
                                     <td style="text-align:right">
-                                        <form action="{{ url('/GestionAgentModifier') }}/{{ $p->id }}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('GET') }}
-                                            <button class="btn-danger">Supprimer</button>
-                                        </form>
+                                        <a href="{{ url('/photo/supprimer') }}/{{ $vehicule }}/{{ $p->id }}" >Supprimer</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -21,7 +21,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 /**
- * list statuts
+ * lstatuts
  */
 Route::get('/statuts', 'StatutsController@index');
 Route::get('/GestionStatutsAjouter', 'StatutsController@indexAdd');
@@ -31,15 +31,20 @@ Route::post('/GestionStatutsModifier', 'StatutsController@Edit');
 Route::get('/GestionStatutsSupprimer/{id}', 'StatutsController@delete');
 
 /**
- * Agents
+ * photos
  */
-Route::get('/photos', 'PhotosController@index');
+
+Route::get('/photos/{vehicule}', 'PhotosController@index');
 Route::get('photo/get/{filename}', [
     'as' => 'getphoto', 'uses' => 'PhotosController@get']);
+Route::get('photo/supprimer/{vehicule}/{id}', [
+    'as' => 'deletephoto', 'uses' => 'PhotosController@delete']);
 Route::post('photo/add/{vehicule}',[
         'as' => 'addphoto', 'uses' => 'PhotosController@add']);
 
-
+/**
+ * Agents
+ */
 
 Route::get('/GestionAgentAjouter','AgentController@indexAdd');
 Route::post('/GestionAgentAjouter','AgentController@Add');

@@ -16,34 +16,39 @@ class PhotosController extends Controller
  *
  * @return \Illuminate\Http\Response
  */
-    public function index()
+    public function index($vehicule)
     {
-        $photos = Photo::all();
-
-        return view('photos.index', ['photos' => $photos]);
+        $photos = Photo::where('vehicule_id', $vehicule)->get();
+        return view('photos.index', compact('photos','vehicule'));
     }
 
     public function add($vehicule) {
             $file = Request::file('photo');
-            $extension = $file->getClientOriginalExtension();
-            $path = "photos/vehicule/$vehicule/".$file->getClientOriginalName();
+            if($file){
+                $extension = $file->getClientOriginalExtension();
+                $path = "photos/vehicule/$vehicule/".$file->getClientOriginalName();
 
-            Storage::disk('local')->put($path,  File::get($file));
-            $photo = new Photo();
-            $photo->nom = $file->getClientOriginalName();
-            $photo->lien = $path;
+                Storage::disk('local')->put($path,  File::get($file));
+                $photo = new Photo();
+                $photo->nom = $file->getClientOriginalName();
+                $photo->lien = $path;
+                $photo->vehicule_id = $vehicule;
 
-            $photo->save();
-
-        return redirect('photos/index');
+                $photo->save();
+            }
+            return redirect("/photos/$vehicule");
     }
 
-    public function delete() {
-            $file = Request::file('photo');
-            $extension = $file->getClientOriginalExtension();
-            Storage::disk('local')->put("photos/vehicule/".$vehicule."/".$file->getClientOriginalName().'.'.$extension,  File::get($file));
-
-        return redirect('photos/index');
+    public function delete($vehicule,$id) {
+            $photo = Photo::find($id);
+            $path = $photo->lien;
+            if (Storage::exists($path)){
+                Storage::delete($path);
+            }else{
+                //die('taz:'.$path);
+            }
+            $photo->delete();
+            return redirect("/photos/$vehicule");
     }
 
 }
