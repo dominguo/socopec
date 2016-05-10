@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 use App\User;
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +32,13 @@ Route::delete('/statut/supprimer/{id}', function (Task $id) {
     return view('statuts/delete');
 });
 
-
-
+///////////////////////////////////////////////Photos//////////////////////////////////////////
+Route::get('/photos', 'PhotosController@index');
+Route::get('photo/get/{filename}', [
+    'as' => 'getphoto', 'uses' => 'PhotosController@get']);
+Route::post('photo/add/{vehicule}',[
+        'as' => 'addphoto', 'uses' => 'PhotosController@add']);
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  * Liste des agents
@@ -55,7 +60,7 @@ Route::get('/GestionAgentModifier/{id}', function ($id) {
 });
 
 Route::post('/GestionAgentModifier', function (Request $request) {
-    
+
     $validator = Validator::make($request->all(), [
         'name' => 'required|max:255',
     ]);
@@ -65,9 +70,9 @@ Route::post('/GestionAgentModifier', function (Request $request) {
             ->withInput()
             ->withErrors($validator);
     }
-    
+
     $user = User::findOrFail($request->id_user);
-    
+
     $user->name= $request->name;
     $user->prenom = $request->prenom;
     if(strlen($request->password) > 0){
