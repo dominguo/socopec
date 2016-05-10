@@ -21,7 +21,7 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 /**
- * lstatuts
+ * statuts
  */
 Route::get('/statuts', 'StatutsController@index');
 Route::get('/GestionStatutsAjouter', 'StatutsController@indexAdd');
@@ -52,3 +52,22 @@ Route::get('/GestionAgent','AgentController@index');
 Route::get('/GestionAgentModifier/{id}','AgentController@loadUser');
 Route::post('/GestionAgentModifier','AgentController@edit');
 
+/**
+ * agences
+ */
+Route::get('/GestionAgence', 'AgencesController@index');
+Route::get('/GestionAgenceAjouter', 'AgencesController@indexAdd');
+Route::post('/GestionAgenceAjouter', 'AgencesController@Add');
+Route::get('/GestionAgenceModifier/{id}', 'AgencesController@indexEdit');
+Route::post('/GestionAgenceModifier', 'AgencesController@Edit');
+Route::get('/GestionAgenceSupprimer/{id}', 'AgencesController@delete');
+
+/**
+ * vehicule
+ */
+Route::get('/GestionVehicule', 'VehiculesController@index');
+Route::get('/GestionVehiculeAjouter', 'VehiculesController@indexAdd');
+Route::post('/GestionVehiculeAjouter', 'VehiculesController@Add');
+Route::get('/GestionVehiculeModifier/{id}', 'VehiculesController@indexEdit');
+Route::post('/GestionVehiculeModifier', 'VehiculesController@Edit');
+Route::get('/GestionVehiculeSupprimer/{id}', 'VehiculesController@delete');
