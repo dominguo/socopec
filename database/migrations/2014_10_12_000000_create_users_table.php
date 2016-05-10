@@ -17,11 +17,11 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-	    $table->string('nom');
-	    $table->string('prenom');
-	    $table->string('num_tel');
-	    $table->string('num_fax');
-	    $table->boolean('actif');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('num_tel');
+            $table->string('num_fax');
+            $table->boolean('actif');
             $table->rememberToken();
             $table->timestamps();
         });
