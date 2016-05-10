@@ -1,5 +1,5 @@
 <?php
-ue Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use App\User;
 /*
 |--------------------------------------------------------------------------
