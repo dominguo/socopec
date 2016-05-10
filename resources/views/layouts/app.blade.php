@@ -1,82 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title>Laravel</title>
+    <title>SOCOPEC</title>
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <!-- MetisMenu CSS -->
+    <link href="/assets/css/metisMenu.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Lato';
-        }
+    <!-- Timeline CSS -->
+    <link href="/assets/css/timeline.css" rel="stylesheet">
 
-        .fa-btn {
-            margin-right: 6px;
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link href="/assets/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/assets/css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
+
+<body id="app-layout">
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}">SOCOPEC</a>
             </div>
+            <!-- /.navbar-header -->
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
+            <ul class="nav navbar-top-links navbar-right">
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">                    
+                     @if (Auth::guest())
+                        <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i> Connection</a></li>
+                        <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-plus"></i> Nouvel utilisateur</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
+                            <li><a href="#">Bonjour {{ Auth::user()->name }} !</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Déconnection</a></li>
                         </li>
                     @endif
-                </ul>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        @if (Auth::guest())
+                            <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i> Se connecter</a></li>
+                            
+                        @else
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                    <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                                </div>
+                                <!-- /input-group -->
+                            </li>
+                            <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord</a>
+                            </li>
+                            <li>
+                                <a href="véhicules.html"><i class="fa fa-car"></i> Gestion des Véhicules</a>
+                            </li>
+                            <li>
+                                <a href="agences.html"><i class="fa fa-map-marker"></i> Gestion des Agences</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/GestionAgent') }}"><i class="fa fa-group"></i> Gestion des Agents</a>
+                            </li>
+                            <li>
+                                <a href="statuts.html"><i class="glyphicon glyphicon-flag"></i> Gestion des Statuts</a>
+                            </li>
+                        @endif
+                    </ul>
+                    
+                </div>
+                <!-- /.sidebar-collapse -->
             </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <br/>
+                 @yield('content')
+            </div>
+        
         </div>
-    </nav>
+    </div>
+    
+        <!-- jQuery -->
+    <script src="/assets/js/jquery.min.js"></script>
 
-    @yield('content')
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/js/bootstrap.min.js"></script>
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/assets/js/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/assets/js/raphael-min.js"></script>
+    <script src="/assets/js/morris.min.js"></script>
+    <script src="/assets/js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/assets/js/sb-admin-2.js"></script>
+
 </body>
+
 </html>
