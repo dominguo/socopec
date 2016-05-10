@@ -5,19 +5,16 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">Modification d'un statut</div>
+                <div class="panel-heading">Ajout d'un statut</div>
 
                 <div class="panel-body">
-                    @foreach ($statuts as $statut)
-                       
-                        
-                      <form class="form-horizontal" method="POST" action="{{ url('/GestionStatutsModifier') }}">
+                      <form class="form-horizontal" method="POST" action="{{ url('/GestionStatutsAjouter') }}">
                         {!! csrf_field() !!}
-                       <input type="hidden" name="id_statut" value="{{$statut->id}}">
+                       
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Nom statut</label>
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" value="{{$statut->libelle}}">
+                                <input type="text" class="form-control" name="name" value="">
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -28,12 +25,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-user"></i> Modifier
+                                    <i class="fa fa-btn fa-user"></i> Ajouter
                                 </button>
                             </div>
                         </div>
-                    </form>    
-                    @endforeach
+                    </form>        
                 </div>
                 </div>
             </div>

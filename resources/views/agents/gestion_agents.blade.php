@@ -8,6 +8,7 @@
                 <div class="panel-heading">Gestion des agents</div>
 
                 <div class="panel-body">
+                    <a href="{{ url('/GestionAgentAjouter') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Ajouter</a>
                     <table class="table table-striped task-table">
                         <!-- Table Headings -->
                         <thead>
@@ -52,7 +53,7 @@
                                         <form action="{{ url('/GestionAgentModifier') }}/{{ $agent->id }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('GET') }}
-                                            <button>Delete Task</button>
+                                            <button class="btn btn-warning"><i class="fa fa-pencil"></i> Modifier</button>
                                         </form>
                                     </td>
                                 </tr>

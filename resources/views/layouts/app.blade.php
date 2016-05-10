@@ -111,7 +111,7 @@
                                 <a href="{{ url('/GestionAgent') }}"><i class="fa fa-group"></i> Gestion des Agents</a>
                             </li>
                             <li>
-                                <a href="statuts.html"><i class="glyphicon glyphicon-flag"></i> Gestion des Statuts</a>
+                                <a href="{{ url('/statuts') }}"><i class="glyphicon glyphicon-flag"></i> Gestion des Statuts</a>
                             </li>
                         @endif
                     </ul>

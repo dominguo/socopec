@@ -11,7 +11,7 @@
                     <form class="form-horizontal" method="POST" action="{{ url('/GestionAgentModifier') }}">
                         {!! csrf_field() !!}
                        
-                        <input type="text" name="id_user" value="{{$agent->id}}">
+                        <input type="hidden" name="id_user" value="{{$agent->id}}">
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Nom</label>
                             <div class="col-md-6">

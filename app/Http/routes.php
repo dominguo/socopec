@@ -24,59 +24,17 @@ Route::get('/home', 'HomeController@index');
  * list statuts
  */
 Route::get('/statuts', 'StatutsController@index');
+Route::get('/GestionStatutsAjouter', 'StatutsController@indexAdd');
+Route::post('/GestionStatutsAjouter', 'StatutsController@Add');
+Route::get('/GestionStatutsModifier/{id}', 'StatutsController@indexEdit');
+Route::post('/GestionStatutsModifier', 'StatutsController@Edit');
+Route::get('/GestionStatutsSupprimer/{id}', 'StatutsController@delete');
 
 /**
- * Delete Task
+ * Agents
  */
-Route::delete('/statut/supprimer/{id}', function (Task $id) {
-    return view('statuts/delete');
-});
-
-
-
-
-/**
- * Liste des agents
- */
-Route::get('/GestionAgent', function () {
-    $user = User::get();
-    return view('gestion_agents', [
-        'agents' => $user
-    ]);
-});
-
-
-/**
- * Suppression logique
- */
-Route::get('/GestionAgentModifier/{id}', function ($id) {
-   $user = User::findOrFail($id)->get();
-   return view('gestion_agents_modifier',['agents' => $user]);
-});
-
-Route::post('/GestionAgentModifier', function (Request $request) {
-    
-    $validator = Validator::make($request->all(), [
-        'name' => 'required|max:255',
-    ]);
-
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
-    
-    $user = User::findOrFail($request->id_user);
-    
-    $user->name= $request->name;
-    $user->prenom = $request->prenom;
-    if(strlen($request->password) > 0){
-        $user->password = $request->password;
-    }
-    $user->num_tel = $request->num_tel;
-    $user->num_fax = $request->num_fax;
-
-    if($user->save()){
-        return redirect('/');
-    }
-});
+Route::get('/GestionAgentAjouter','AgentController@indexAdd');
+Route::post('/GestionAgentAjouter','AgentController@Add');
+Route::get('/GestionAgent','AgentController@index');
+Route::get('/GestionAgentModifier/{id}','AgentController@loadUser');
+Route::post('/GestionAgentModifier','AgentController@edit');
