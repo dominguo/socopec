@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Http\Request; 
+use App\User;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
