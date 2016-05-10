@@ -77,9 +77,9 @@ class StatutsController extends Controller
     }    
     
     public function delete($id)
-    {
-        $statuts = Statut::where('id',$id)->get();
-        $statuts->delete();
+    {                
+        $statut= Statut::destroy($id);
+        return redirect('/statuts');       
     }
 }
 

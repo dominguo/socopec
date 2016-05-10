@@ -8,6 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <!-- jQuery -->
+    <script src="/assets/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/js/bootstrap.min.js"></script>
 
     <title>SOCOPEC</title>
 
@@ -102,10 +107,10 @@
                             <li><a href="{{ url('/home') }}"><i class="fa fa-dashboard fa-fw"></i> Tableau de bord</a>
                             </li>
                             <li>
-                                <a href="véhicules.html"><i class="fa fa-car"></i> Gestion des Véhicules</a>
+                                <a href="{{ url('/GestionVehicule') }}"><i class="fa fa-car"></i> Gestion des Véhicules</a>
                             </li>
                             <li>
-                                <a href="agences.html"><i class="fa fa-map-marker"></i> Gestion des Agences</a>
+                                <a href="{{ url('/GestionAgence') }}"><i class="fa fa-map-marker"></i> Gestion des Agences</a>
                             </li>
                             <li>
                                 <a href="{{ url('/GestionAgent') }}"><i class="fa fa-group"></i> Gestion des Agents</a>
@@ -131,12 +136,7 @@
         </div>
     </div>
     
-        <!-- jQuery -->
-    <script src="/assets/js/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/assets/js/bootstrap.min.js"></script>
-
+    
     <!-- Metis Menu Plugin JavaScript -->
     <script src="/assets/js/metisMenu.min.js"></script>
 
