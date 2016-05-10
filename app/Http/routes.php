@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Http\Request; 
+ue Illuminate\Http\Request;
 use App\User;
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +33,14 @@ Route::get('/GestionStatutsSupprimer/{id}', 'StatutsController@delete');
 /**
  * Agents
  */
+Route::get('/photos', 'PhotosController@index');
+Route::get('photo/get/{filename}', [
+    'as' => 'getphoto', 'uses' => 'PhotosController@get']);
+Route::post('photo/add/{vehicule}',[
+        'as' => 'addphoto', 'uses' => 'PhotosController@add']);
+
+
+
 Route::get('/GestionAgentAjouter','AgentController@indexAdd');
 Route::post('/GestionAgentAjouter','AgentController@Add');
 Route::get('/GestionAgent','AgentController@index');
