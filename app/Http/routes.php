@@ -66,3 +66,12 @@ Route::post('/GestionVehiculeAjouter', 'VehiculesController@Add');
 Route::get('/GestionVehiculeModifier/{id}', 'VehiculesController@indexEdit');
 Route::post('/GestionVehiculeModifier', 'VehiculesController@Edit');
 Route::get('/GestionVehiculeSupprimer/{id}', 'VehiculesController@delete');
+
+/**
+ * probleme
+ */
+Route::get('/GestionProbleme', 'ProblemesController@index');
+Route::get('/GestionProblemeAjouter', 'ProblemesController@indexAdd');
+Route::post('/GestionProblemeAjouter', 'ProblemesController@Add');
+Route::get('/GestionProblemeModifier/{id}', 'ProblemesController@indexEdit');
+Route::post('/GestionProblemeModifier', 'ProblemesController@Edit');

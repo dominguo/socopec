@@ -1,14 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+@foreach ($statuts as $statut)
 <div class="container">
+    <ol class="breadcrumb">
+        <li><a href="{{ url('/statuts') }}">Gestion des statuts</a></li>
+        <li class="active">Statut n° {{ $statut->id }}</li>
+    </ol>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Modification d'un statut</div>
 
                 <div class="panel-body">
-                    @foreach ($statuts as $statut)
                        
                         
                       <form class="form-horizontal" method="POST" action="{{ url('/GestionStatutsModifier') }}">

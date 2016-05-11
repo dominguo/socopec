@@ -2,13 +2,18 @@
 
 @section('content')
 <div class="container">
+    @foreach ($agences as $agence)
+    <ol class="breadcrumb">
+        <li><a href="{{ url('/GestionAgence') }}">Gestion des agences</a></li>
+        <li class="active">Agences n° {{ $agence->id }}</li>
+    </ol>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">Modification d'une agence</div>
 
                 <div class="panel-body">
-                    @foreach ($agences as $agence)
+                    
                       <form class="form-horizontal" method="POST" action="{{ url('/GestionAgenceModifier') }}">
                         {!! csrf_field() !!}
                        <input type="hidden" name="id_agence" value="{{$agence->id}}">

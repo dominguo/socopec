@@ -8,17 +8,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- jQuery -->
-    <script src="/assets/js/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="/assets/js/bootstrap.min.js"></script>
 
     <title>SOCOPEC</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- DataTable CSS -->
+    <link href="/assets/css/datatables.min.css" rel="stylesheet" type="text/css" />
+    
     <!-- MetisMenu CSS -->
     <link href="/assets/css/metisMenu.min.css" rel="stylesheet">
 
@@ -34,6 +33,14 @@
     <!-- Custom Fonts -->
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    
+        <!-- jQuery -->
+    <script src="/assets/js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/js/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="/assets/js/datatables.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -117,6 +124,9 @@
                             </li>
                             <li>
                                 <a href="{{ url('/statuts') }}"><i class="glyphicon glyphicon-flag"></i> Gestion des Statuts</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/GestionProbleme') }}"><i class="fa  fa-exclamation-triangle"></i> Gestion des Problèmes</a>
                             </li>
                         @endif
                     </ul>

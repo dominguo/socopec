@@ -3,8 +3,8 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Gestion des statuts
-            <a class="btn btn-primary pull-right" href="{{ url('/GestionStatutsAjouter') }}"><i class="fa fa-plus"></i> Ajouter un statut</a>
+        <h1 class="page-header">Gestion des problèmes
+            <a class="btn btn-primary pull-right" href="{{ url('/GestionProblemeAjouter') }}"><i class="fa fa-plus"></i> Ajouter un problème</a>
 
         </h1>
     </div>
@@ -16,25 +16,30 @@
 
         <table class="table table-striped task-table">
             <thead>
-            <th>Nom Statut</th>
+            <th>Déscription du problème</th>
+            <th>Actif</th>
             <th style="text-align:right">Action</th>
             </thead>
             <tbody>
-                @foreach ($statuts as $s)
+                @foreach ($problemes as $s)
                 <tr>
                     <td class="table-text">
-                        <div>{{ $s->libelle }}</div>
+                        <div>{{ $s->commentaire }}</div>
+                    </td>
+                    <td class="table-text">
+                        <div>
+                            @if ($s->active == 0)
+                            Non
+                            @else
+                            Oui
+                            @endif
+                        </div>
                     </td>
                     <td style="text-align:right">
-                        <form action="{{ url('/GestionStatutsSupprimer') }}/{{ $s->id }}" method="POST">
+                        <form action="{{ url('/GestionProblemeModifier') }}/{{ $s->id }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('GET') }}
-                            <button class="btn btn-danger" style="float:right;margin-left: 4px;">Supprimer</button>
-                        </form>
-                        <form action="{{ url('/GestionStatutsModifier') }}/{{ $s->id }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('GET') }}
-                            <button class="btn btn-defaut">Modifier</button>
+                            <button class="btn btn-defaut">Modifier/Consulter</button>
                         </form>
 
                     </td>
