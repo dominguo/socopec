@@ -2,6 +2,10 @@
 
 @section('content')
 <div class="container">
+    <ol class="breadcrumb">
+        <li><a href="{{ url('/GestionVehicule') }}">Gestion des statuts</a></li>
+        <li class="active">Ajout</li>
+    </ol>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">

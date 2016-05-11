@@ -1,13 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+                    @foreach ($agents as $agent)
 <div class="container">
+    <ol class="breadcrumb">
+        <li><a href="{{ url('/GestionAgent') }}">Gestion des agents</a></li>
+        <li class="active">Agents n° {{ $agent->id }}</li>
+    </ol>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Modifier d'un utilisateur</div>
                 <div class="panel-body">
-                    @foreach ($agents as $agent)
+
                     <form class="form-horizontal" method="POST" action="{{ url('/GestionAgentModifier') }}">
                         {!! csrf_field() !!}
                        

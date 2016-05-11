@@ -80,14 +80,14 @@
                                 <div class="col-xs-3">
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
+                                    <div class="huge">{{$problemes->count()}}</div>
                                     <div>Problème(s) en cours</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="{{url('/GestionProbleme')}}">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">Voir Détails</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -227,28 +227,15 @@
                                 <!-- /.panel-heading -->
                                 <div class="panel-body">
                                     <div class="list-group">
-                                        <a href="#" class="list-group-item">
-                                            <i class="glyphicon glyphicon-alert"></i> Problèmes 1
-                                            <span class="pull-right text-muted small"><em>4 minutes</em>
+                                        @foreach($problemes_top_5 as $p)
+                                        <a href="{{ url('/GestionProblemeModifier')}}/{{$p->id}}" class="list-group-item">
+                                            <i class="glyphicon glyphicon-alert"></i>{{ $p->commentaire }}
+                                            <span class="pull-right text-muted small"><em>{{ with($p->created_at)->format('d/m/Y H:i') }}</em>
                                             </span>
                                         </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="glyphicon glyphicon-alert"></i> Carte grise à refaire
-                                            <span class="pull-right text-muted small"><em>12 minutes</em>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="glyphicon glyphicon-alert"></i> Contrôle technique périmé
-                                            <span class="pull-right text-muted small"><em>27 minutes</em>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="list-group-item">
-                                            <i class="glyphicon glyphicon-alert"></i> Pneus à changer
-                                            <span class="pull-right text-muted small"><em>43 minutes</em>
-                                            </span>
-                                        </a>
+                                        @endforeach
                                     <!-- /.list-group -->
-                                    <a href="#" class="btn btn-default btn-block">Voir plus</a>
+                                    <a href="{{ url('/GestionProbleme')}}" class="btn btn-default btn-block">Voir plus</a>
                                 </div>
                                 <!-- /.panel-body -->
                                 </div>
