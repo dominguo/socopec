@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <!-- jQuery -->
     <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery-ui.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/assets/js/bootstrap.min.js"></script>
@@ -33,6 +34,14 @@
 
     <!-- Custom Fonts -->
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!--  Calendar -->
+    <link href='/assets/css/fullcalendar.css' rel='stylesheet' />
+    <link href='/assets/css/fullcalendar.print.css' rel='stylesheet' media='print' />
+    <link href='/assets/css/cupertino/jquery-ui.min.css' rel='stylesheet' />
+    <script src='/assets/js/moment.min.js'></script>
+    <script src='/assets/js/fullcalendar.min.js'></script>
+    <script src='/assets/js/fr.js'></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +77,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">                    
+                    <ul class="dropdown-menu dropdown-user">
                      @if (Auth::guest())
                         <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i> Connection</a></li>
                         <li><a href="{{ url('/register') }}"><i class="fa fa-btn fa-plus"></i> Nouvel utilisateur</a></li>
@@ -85,13 +94,13 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-            
+
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         @if (Auth::guest())
                             <li><a href="{{ url('/login') }}"><i class="fa fa-btn fa-sign-in"></i> Se connecter</a></li>
-                            
+
                         @else
                             <li class="sidebar-search">
                                 <div class="input-group custom-search-form">
@@ -120,7 +129,7 @@
                             </li>
                         @endif
                     </ul>
-                    
+
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
@@ -132,11 +141,11 @@
                 <br/>
                  @yield('content')
             </div>
-        
+
         </div>
     </div>
-    
-    
+
+
     <!-- Metis Menu Plugin JavaScript -->
     <script src="/assets/js/metisMenu.min.js"></script>
 

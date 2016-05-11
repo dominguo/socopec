@@ -42,6 +42,10 @@ Route::get('photo/supprimer/{vehicule}/{id}', [
 Route::post('photo/add/{vehicule}',[
         'as' => 'addphoto', 'uses' => 'PhotosController@add']);
 
+Route::get('/historique/{vehicule}', 'HistoriqueController@index');
+Route::get('/historique/getH/{vehicule}', 'HistoriqueController@getH');
+Route::post('/historique/reserver', 'HistoriqueController@add');
+
 /**
  * Agents
  */
